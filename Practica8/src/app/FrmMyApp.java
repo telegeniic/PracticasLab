@@ -13,7 +13,7 @@ public class FrmMyApp extends JFrame{
 
     JFrame frame;
 
-    FrmMyApp() {
+    public void init() {
 
         //Name form
         JLabel LblName = new JLabel("Nombre:");
