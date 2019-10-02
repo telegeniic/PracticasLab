@@ -1,17 +1,36 @@
 package app;
 
-//import javax.swing.GroupLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-public class FrmMyApp extends JFrame{
+public class FrmMyApp extends JFrame implements ActionListener{
 
     private static final long serialVersionUID = 1L;
 
     JFrame frame;
+
+    //Labels declarations
+    JLabel LblName;
+    JLabel LblLastName;
+    JLabel LblMail;
+    JLabel LblPhone;
+
+    //Texts declarations
+    JTextField TxtName;
+    JTextField TxtLastName;
+    JTextField TxtMail;
+    JTextField TxtPhone;
+
+    //Buttons declarations
+    JButton BtnClear;
+    JButton BtnAccept;
+    JButton BtnNext;
+    JButton BtnPrevious;
 
     public void init() {
 
@@ -24,34 +43,34 @@ public class FrmMyApp extends JFrame{
         int infoHeightP = 20;  //Height of Labels & Texts
 
         //Name form
-        JLabel LblName = new JLabel("Nombre:");
+        LblName = new JLabel("Nombre:");
         LblName.setBounds(columns[0],rows[0],infoWidthP,infoHeightP);
         add(LblName);
-        JTextField TxtName = new JTextField();
+        TxtName = new JTextField();
         TxtName.setBounds(columns[1],rows[0],infoWidthP,infoHeightP);
         add(TxtName);
         
         //Last name form
-        JLabel LblLastName = new JLabel("Apellido:");
+        LblLastName = new JLabel("Apellido:");
         LblLastName.setBounds(columns[0],rows[1],infoWidthP,infoHeightP);
         add(LblLastName);
-        JTextField TxtLastName = new JTextField();
+        TxtLastName = new JTextField();
         TxtLastName.setBounds(columns[1],rows[1],infoWidthP,infoHeightP);
         add(TxtLastName);
 
         //E-Mail form
-        JLabel LblMail = new JLabel("E-Mail:");
+        LblMail = new JLabel("E-Mail:");
         LblMail.setBounds(columns[0],rows[2],infoWidthP,infoHeightP);
         add(LblMail);
-        JTextField TxtMail = new JTextField();
+        TxtMail = new JTextField();
         TxtMail.setBounds(columns[1],rows[2],infoWidthP,infoHeightP);
         add(TxtMail);
 
         //Telephone form
-        JLabel LblPhone = new JLabel("Telefono:");
+        LblPhone = new JLabel("Telefono:");
         LblPhone.setBounds(columns[0],rows[3],infoWidthP,infoHeightP);
         add(LblPhone);
-        JTextField TxtPhone = new JTextField();
+        TxtPhone = new JTextField();
         TxtPhone.setBounds(columns[1],rows[3],infoWidthP,infoHeightP);
         add(TxtPhone);
 
@@ -60,22 +79,23 @@ public class FrmMyApp extends JFrame{
         int btnWidthP = 125; //Width of buttons
         
         //Clear button
-        JButton BtnClear = new JButton("Borrar");
+        BtnClear = new JButton("Borrar");
         BtnClear.setBounds(columns[2],rows[0],btnWidthP,btnHeightP);
+        BtnClear.addActionListener(this);
         add(BtnClear);
 
         //Accept button
-        JButton BtnAccept = new JButton("Aceptar");
+        BtnAccept = new JButton("Aceptar");
         BtnAccept.setBounds(columns[2],rows[1],btnWidthP,btnHeightP);
         add(BtnAccept);
 
         //Next button
-        JButton BtnNext = new JButton("Siguiente");
+        BtnNext = new JButton("Siguiente");
         BtnNext.setBounds(columns[2],rows[2],btnWidthP,btnHeightP);
         add(BtnNext);
 
         //Previous button
-        JButton BtnPrevious = new JButton("Anterior");
+        BtnPrevious = new JButton("Anterior");
         BtnPrevious.setBounds(columns[2],rows[3],btnWidthP,btnHeightP);
         add(BtnPrevious);
 
@@ -84,6 +104,17 @@ public class FrmMyApp extends JFrame{
         setLayout(null);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource() == BtnClear)
+        {
+            TxtName.setText("");
+            TxtLastName.setText("");
+            TxtMail.setText("");
+            TxtPhone.setText("");
+        }
+
     }
     
 }
